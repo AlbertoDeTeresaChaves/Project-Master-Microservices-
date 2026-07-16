@@ -1,0 +1,58 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    #active: native
+    active: git
+  cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          consumer:
+            enabled: false
+    config:
+      server:
+        #native:
+          #search-locations: "classpath:/config"
+        git:
+          uri: "git@github.com:AlbertoDeTeresaChaves/eazybyte-config.git"
+          ignore-local-ssh-settings: true
+          private-key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACDh423OdgaYBYJ4w7xLAIfOr6J9hi+eeTKcu+uNCcsqgAAAAKB3Sw7id0sO
+            4gAAAAtzc2gtZWQyNTUxOQAAACDh423OdgaYBYJ4w7xLAIfOr6J9hi+eeTKcu+uNCcsqgA
+            AAAEAfT3+7uw6L4Ru383mcP/pxf/pRGpn5NUneJMjdXmbe6+Hjbc52BpgFgnjDvEsAh86v
+            on2GL555Mpy7640JyyqAAAAAHGFsYmVydG8udHJhYmFqby5lc0BnbWFpbC5jb20B
+            -----END OPENSSH PRIVATE KEY-----
+
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+encrypt:
+  key: "ZqFEjptdQ1OSbGMhJsNf0HN9AH0hGPcxQ5sr8lw5ReV"
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

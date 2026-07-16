@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to Bank accounts related local APIs"
+  contactDetails:
+    name: "Alberto - Developer"
+    email: "alberto.trabajo.es@gmail.com"
+  onCallSupport:
+    - 717715674
+    - 693339937

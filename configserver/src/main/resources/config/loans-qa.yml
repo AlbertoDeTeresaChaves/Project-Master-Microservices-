@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to Bank loans related QA APIs"
+  contactDetails:
+    name: "Alberto - QA Lead"
+    email: "alberto.trabajo.es@gmail.com"
+  onCallSupport:
+    - 717715674
+    - 693339937

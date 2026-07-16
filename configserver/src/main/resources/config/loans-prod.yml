@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Bank loans related prod APIs"
+  contactDetails:
+    name: "Alberto - Product Owner"
+    email: "alberto.trabajo.es@gmail.com"
+  onCallSupport:
+    - 717715674
+    - 693339937
